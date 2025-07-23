@@ -11,4 +11,8 @@ public class controller {
     public String greet(){
         return "welcome to all developers";
     }
+    @GetMapping("/show")
+    public String show(){
+       return "this return all items in file";
+    }
 }
