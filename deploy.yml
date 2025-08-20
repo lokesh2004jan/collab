@@ -1,0 +1,25 @@
+name: Deploy Workflow
+
+# Trigger: manual or on push
+on:
+  workflow_dispatch: # allows manual trigger
+    inputs:
+      branch:
+        description: 'Branch to deploy'
+        required: true
+        default: 'main'
+      environment:
+        description: 'Deployment environment'
+        required: true
+        default: 'staging'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy
+        run: |
+          echo "Deploying branch ${{ github.event.inputs.branch }} to ${{ github.event.inputs.environment }}"
